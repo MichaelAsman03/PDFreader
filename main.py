@@ -25,15 +25,20 @@ print("2. Normal")
 print("3. Fast")
 choice = input("Enter your choice: ")
 
+# Set the speaking rate based on user choice
 if choice == "1":
-    player.setProperty("Rate", 100)
+    player.setProperty("rate", 100)
+    print("Set to Slow speed (100 wpm)")
 elif choice == "2":
-    player.setProperty("Rate", 150)
+    player.setProperty("rate", 150)
+    print("Set to Normal speed (150 wpm)")
 elif choice == "3":
-    player.setProperty("Rate", 200)
+    player.setProperty("rate", 200)
+    print("Set to Fast speed (200 wpm)")
 else:
-    print("Invalid choice.")  
+    print("Invalid choice.")
     player.setProperty("rate", 150)  # Default speed
+    print("Set to Default speed (150 wpm)")
 
 # Check if the speed has been updated
 updated_rate = player.getProperty('rate')
@@ -45,12 +50,6 @@ for num in range(pages):
     text = page.extract_text()
 
 
-for num in range(pages):
-    page = pdfreader.pages[num]
-    text = page.extract_text()
-    
-
-    
     if text:
         player.say(text)
         player.runAndWait()
