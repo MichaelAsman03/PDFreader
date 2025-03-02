@@ -10,6 +10,11 @@ pages = len(pdfreader.pages)
 
 player = pyttsx3.init()
 
+# Get the current speaking rate and print for debugging
+current_rate = player.getProperty('rate')
+print(f"Current speaking rate: {current_rate}")
+
+
 print("Choose the reading speed:")
 print("1. Slow")
 print("2. Normal")
@@ -23,7 +28,17 @@ elif choice == "2":
 elif choice == "3":
     player.setProperty("Rate", 200)
 else:
-    print("Invalid choice.")    
+    print("Invalid choice.")  
+    player.setProperty("rate", 150)  # Default speed
+
+# Check if the speed has been updated
+updated_rate = player.getProperty('rate')
+print(f"Updated speaking rate: {updated_rate}")
+
+# Read the PDF out loud
+for num in range(pages):
+    page = pdfreader.pages[num]
+    text = page.extract_text()
 
 
 for num in range(pages):
