@@ -4,6 +4,10 @@ from tkinter.filedialog import *
 
 book = askopenfilename()
 
+if not book:
+    print("No file selected.")
+    exit()
+
 pdfreader = PyPDF2.PdfReader(book)
 pages = len(pdfreader.pages)
 
