@@ -33,4 +33,5 @@ for num in range(pages):
 
     
     if text:
+        player.say(text)
         player.runAndWait()
