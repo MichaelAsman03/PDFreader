@@ -4,6 +4,7 @@ from tkinter.filedialog import *
 
 book = askopenfilename()
 
+
 if not book:
     print("No file selected.")
     exit()
@@ -13,10 +14,6 @@ pages = len(pdfreader.pages)
 
 
 player = pyttsx3.init()
-
-# Get the current speaking rate and print for debugging
-current_rate = player.getProperty('rate')
-print(f"Current speaking rate: {current_rate}")
 
 
 print("Choose the reading speed:")
@@ -40,9 +37,6 @@ else:
     player.setProperty("rate", 150)  # Default speed
     print("Set to Default speed (150 wpm)")
 
-# Check if the speed has been updated
-updated_rate = player.getProperty('rate')
-print(f"Updated speaking rate: {updated_rate}")
 
 # Read the PDF out loud
 for num in range(pages):
